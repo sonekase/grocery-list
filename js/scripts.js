@@ -1,18 +1,27 @@
 $(document).ready(function(){
+  var initialArraySize = 2;
+  $("button#add-item").click(function(){
+    initialArraySize += 1;
+    $("#shopping-list").append('<li><input id="item' + initialArraySize + '" class="form-control" type="text"></li>');
+  });
+
   $("#grocery-list").submit(function(event){
     event.preventDefault();
 
-    var groceries = ["grocery1", "grocery2"];
-    var count = 1;
-    groceries.forEach(function(grocery){
+    var groceries = new Array(initialArraySize);
+    debugger;
+    for (count = 1; count <= initialArraySize; count +=1 ){
       groceries[count-1] = $("input#item" + count).val();
-      count += 1;
-    });
+    };
 
     groceries.sort();
 
-    groceries.map(function(grocery) {
-      $("#sorted-list").append("<li>" + grocery.toUpperCase() + "</li>");
+    var upperCaseGroceries = groceries.map(function(grocery) {
+      return grocery.toUpperCase();
+    });
+
+    upperCaseGroceries.forEach(function(grocery){
+    $("#sorted-list").append("<li>" + grocery + "</li>");
     });
 
     $("#grocery-list").hide();
