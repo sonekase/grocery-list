@@ -9,7 +9,7 @@ $(document).ready(function(){
     event.preventDefault();
 
     var groceries = new Array(initialArraySize);
-    debugger;
+    
     for (count = 1; count <= initialArraySize; count +=1 ){
       groceries[count-1] = $("input#item" + count).val();
     };
